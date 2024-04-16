@@ -1,5 +1,58 @@
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; 
+    font-family: Roboto, 
+    "Helvetica Neue", sans-serif; 
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Сделать wrapper занимающим минимум 100% высоты окна браузера */
+  }
+
+header {
+	background: #222;
+	padding: 0;
+	margin: 0;
+    overflow: hidden;
+    --bs-gutter-x: 0;
+}
+
+header .container-fluid{
+    --bs-gutter-x:0
+}
+
+header .top {
+	position: relative;
+	height: 10px;
+	background: linear-gradient(141deg, cyan 0%, rebeccapurple 40%, deeppink 90%);
+}
+
+header h1 {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  font-size: 4vw;
+  font-weight: 300;
+	text-transform: uppercase;
+}
+
+header .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+main{
+    padding: 40px 0 100px 0px;
+    flex-grow: 1;
+}
+
+footer{
+    flex-shrink: 0;
+    background-color: #45526e
+}
 
 .chart-controls .mat-mdc-mini-fab{
     box-shadow: none;
@@ -17,3 +70,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html .chart-controls .mat-mdc-mini-fab.mat-accent {
     --mdc-fab-small-container-color: #fff;
 }
+
+/* Example of smaller datepicker */
+.mat-datepicker-content {
+    font-size: 0.8rem; /* Adjust font size */
+  }
+  
+  .mat-form-field {
+    font-size: 0.8rem; /* Adjust input font size */
+  }
+  
+  .mat-datepicker-toggle-default-icon {
+    font-size: 1rem; /* Adjust toggle icon size */
+  }

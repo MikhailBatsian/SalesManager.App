@@ -1,28 +1,52 @@
-<div class="container">
-    <h1>Chart Sales</h1>
-    <div class="row">
-        <div class="col-2">
-            <button mat-stroked-button (click)="resetZoom()">Reset Zoom</button>
-        </div>
-        <div class="col-2">
-            <div class="chart-controls" style="display: flex;">
-                <button *ngIf="!shouldHideBtnPrevious" mat-mini-fab (click)="getPreviousData()">
-                    <mat-icon> 
-                        arrow_back_ios_new 
-                    </mat-icon>
-                </button> 
-                <button *ngIf="!shouldHideBtnNext" mat-mini-fab (click)="getNexData()">
-                    <mat-icon> 
-                        arrow_forward_ios_new 
-                    </mat-icon>
-                </button>
-            </div>
-
+<div class="row">
+    <div class="col-3">
+        <mat-form-field>
+            <mat-label>Date Interval</mat-label>
+            <mat-select  [(ngModel)]="selectedDateInterval" (selectionChange)="onChangeDateInterval($event.value)">
+              @for (dateInterval of dateIntervals; track dateInterval) {
+                <mat-option [value]="dateInterval.id">{{dateInterval.viewValue}}</mat-option>
+              }
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-3">
+        <div>
+            <mat-form-field color="accent">
+                <mat-label>Custom calendar color</mat-label>
+                <input matInput [matDatepicker]="picker1">
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1 ></mat-datepicker>
+            </mat-form-field>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <app-chart [labels]="startDates" [data]="salesAmounts"></app-chart>
+    <div class="col-3">
+        <mat-form-field color="accent">
+            <mat-label>Custom calendar color</mat-label>
+            <input matInput [matDatepicker]="picker2">
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+          </mat-form-field>
+    </div>
+    <div class="col-2">
+        <button mat-stroked-button (click)="resetZoom()">Reset Zoom</button>
+    </div>
+    <div class="col-1">
+        <div class="chart-controls" style="display: flex;">
+            <button *ngIf="!shouldHideBtnPrevious" mat-mini-fab (click)="getPreviousData()">
+                <mat-icon> 
+                    arrow_back_ios_new 
+                </mat-icon>
+            </button> 
+            <button *ngIf="!shouldHideBtnNext" mat-mini-fab (click)="getNexData()">
+                <mat-icon> 
+                    arrow_forward_ios_new 
+                </mat-icon>
+            </button>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <app-chart [labels]="startDates" [data]="salesAmounts"></app-chart>
     </div>
 </div>
