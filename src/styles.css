@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.chart-controls .mat-mdc-mini-fab{
+    box-shadow: none;
+    margin-left: 10px!important;
+}
+
+.chart-controls .mat-mdc-mini-fab:hover{
+    box-shadow: none;
+}
+
+.mat-mdc-mini-fab:not(.mdc-fab--extended) .mdc-fab__ripple {
+    border: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+html .chart-controls .mat-mdc-mini-fab.mat-accent {
+    --mdc-fab-small-container-color: #fff;
+}

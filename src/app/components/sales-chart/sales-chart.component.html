@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Chart Sales</h1>
+    <div class="row">
+        <div class="col-2">
+            <button mat-stroked-button (click)="resetZoom()">Reset Zoom</button>
+        </div>
+        <div class="col-2">
+            <div class="chart-controls" style="display: flex;">
+                <button *ngIf="!shouldHideBtnPrevious" mat-mini-fab (click)="getPreviousData()">
+                    <mat-icon> 
+                        arrow_back_ios_new 
+                    </mat-icon>
+                </button> 
+                <button *ngIf="!shouldHideBtnNext" mat-mini-fab (click)="getNexData()">
+                    <mat-icon> 
+                        arrow_forward_ios_new 
+                    </mat-icon>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <app-chart [labels]="startDates" [data]="salesAmounts"></app-chart>
+        </div>
+    </div>
+</div>
