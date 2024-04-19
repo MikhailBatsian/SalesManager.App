@@ -7,18 +7,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SaleService {
+  private apiHost:string = 'https://localhost:44305';
 
   constructor(private http:HttpClient) { }
 
   GetSalesDataTotalCount(filter: any):Observable<number>{
     const params = new HttpParams().appendAll(filter);
     
-    return this.http.get<number>('https://localhost:44305/api/sales/datacount', {params: params});
+    return this.http.get<number>(`${this.apiHost}/api/sales/datacount`, {params: params});
   }
 
   GetSalesData(filter: any):Observable<SalesData[]>{
     const params = new HttpParams().appendAll(filter);
     
-    return this.http.get<SalesData[]>('https://localhost:44305/api/sales/data/', {params: params});
+    return this.http.get<SalesData[]>(`${this.apiHost}/api/sales/data/`, {params: params});
   }
 }

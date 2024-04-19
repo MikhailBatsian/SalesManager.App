@@ -39,7 +39,7 @@ export class ChartComponent implements OnInit{
       data: {
         labels: this.labels,
         datasets: [{
-          label: 'Sales sum',
+          label: 'Sales sum, $',
           data: this.salesAmounts,
           borderWidth: 1,
           yAxisID: 'y'
@@ -62,7 +62,14 @@ export class ChartComponent implements OnInit{
                 font: {
                     size: this.chartFontSize, // set the font size for x-axis labels
                 }
-            }
+            },
+            title: {
+              display: true,
+              text: 'Time',
+              font:{
+                size: this.chartFontSize
+              }
+            },
         },
           y: {
             beginAtZero: true,
