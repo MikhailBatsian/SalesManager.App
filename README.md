@@ -10,3 +10,6 @@ Stack info:
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+#App page example
+![image](https://github.com/MikhailBatsian/SalesManager.App/assets/101316556/0998a4c4-6c8a-4111-a92d-97bbaee88291)
