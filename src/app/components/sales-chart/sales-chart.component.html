@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-3">
-        <mat-form-field>
+    <div class="col-md-2 col-sm-12 pr-0">
+        <mat-form-field class="w-100">
             <mat-label>Date Interval</mat-label>
             <mat-select  [(ngModel)]="selectedDateInterval" (selectionChange)="onChangeDateInterval($event.value)">
               @for (dateInterval of dateIntervals; track dateInterval) {
@@ -9,44 +9,58 @@
             </mat-select>
         </mat-form-field>
     </div>
-    <div class="col-3">
-        <div>
-            <mat-form-field color="accent">
-                <mat-label>Custom calendar color</mat-label>
-                <input matInput [matDatepicker]="picker1">
-                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1 ></mat-datepicker>
-            </mat-form-field>
-        </div>
+    <div class="col-md-3 col-sm-12">
+        <mat-form-field class="w-100">
+            <mat-label>Star Date</mat-label>
+            <input matInput [matDatepicker]="startDate" [(ngModel)]="periodStartDate"  (dateChange)="onChangeStartDate($event.value)">
+            <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate color="primary"></mat-datepicker>
+        </mat-form-field>
+        @if (isStartDateInvalid) {
+            <mat-error>Invalid start date</mat-error>
+        }
     </div>
-    <div class="col-3">
-        <mat-form-field color="accent">
-            <mat-label>Custom calendar color</mat-label>
-            <input matInput [matDatepicker]="picker2">
-            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+    <div class="col-md-3 col-sm-12 pl-0">
+        <mat-form-field class="w-100">
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="endDate" [(ngModel)]="periodEndDate" (dateChange)="onChangeEndDate($event.value)">
+            <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate color="primary"></mat-datepicker>
           </mat-form-field>
+          @if (isEndDateInvalid) {
+            <mat-error>Invalid end date</mat-error>
+          }
     </div>
-    <div class="col-2">
-        <button mat-stroked-button (click)="resetZoom()">Reset Zoom</button>
+    <div class="col-md-2 col-sm-12 pl-0">
+        <button *ngIf="startDates.length" mat-stroked-button (click)="resetZoom()" class="material-btn">Reset Zoom</button>
     </div>
-    <div class="col-1">
-        <div class="chart-controls" style="display: flex;">
-            <button *ngIf="!shouldHideBtnPrevious" mat-mini-fab (click)="getPreviousData()">
-                <mat-icon> 
-                    arrow_back_ios_new 
-                </mat-icon>
-            </button> 
-            <button *ngIf="!shouldHideBtnNext" mat-mini-fab (click)="getNexData()">
-                <mat-icon> 
-                    arrow_forward_ios_new 
-                </mat-icon>
-            </button>
+    <div class="col-md-2 col-sm-12">
+        <div *ngIf="startDates.length" class="chart-controls">
+            <div class="d-flex justify-content-center">
+                <div сlass="left-btn">
+                    <button [disabled]="!shouldShowBtnPrevious" mat-mini-fab (click)="getPreviousData()">
+                        <mat-icon> 
+                            arrow_back_ios_new 
+                        </mat-icon>
+                    </button> 
+                </div>
+                <div class="right-btn">
+                    <button [disabled]="!shouldShowBtnNext" mat-mini-fab (click)="getNexData()">
+                        <mat-icon> 
+                            arrow_forward_ios_new 
+                        </mat-icon>
+                    </button>
+                </div>
+           </div>
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row pt-3">
     <div class="col-12">
-        <app-chart [labels]="startDates" [data]="salesAmounts"></app-chart>
+        <app-chart *ngIf="startDates.length" [labels]="startDates" [salesAmounts]="salesAmounts" [salesCounts]="salesCounts">
+        </app-chart>
+        <div *ngIf="!startDates.length" class="no-data">
+            <h1>There is no data to display on the chart</h1>
+        </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SalesAmount } from '../interfaces/sales-amount';
+import { SalesData } from '../interfaces/sales-data';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,9 +10,15 @@ export class SaleService {
 
   constructor(private http:HttpClient) { }
 
-  GetSalesAmounts(filter: any):Observable<SalesAmount[]>{
+  GetSalesDataTotalCount(filter: any):Observable<number>{
+    const params = new HttpParams().appendAll(filter);
+    
+    return this.http.get<number>('https://localhost:44305/api/sales/datacount', {params: params});
+  }
 
-    const params = new HttpParams().appendAll(filter);//({fromObject: filter})
-    return this.http.get<SalesAmount[]>('https://localhost:44305/api/sales/amounts/', {params: params});
+  GetSalesData(filter: any):Observable<SalesData[]>{
+    const params = new HttpParams().appendAll(filter);
+    
+    return this.http.get<SalesData[]>('https://localhost:44305/api/sales/data/', {params: params});
   }
 }

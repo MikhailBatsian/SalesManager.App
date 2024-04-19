@@ -54,32 +54,10 @@ footer{
     background-color: #45526e
 }
 
-.chart-controls .mat-mdc-mini-fab{
-    box-shadow: none;
-    margin-left: 10px!important;
-}
-
-.chart-controls .mat-mdc-mini-fab:hover{
-    box-shadow: none;
+html .chart-controls .mat-mdc-mini-fab.mat-accent {
+  --mdc-fab-small-container-color: #fff;
 }
 
 .mat-mdc-mini-fab:not(.mdc-fab--extended) .mdc-fab__ripple {
-    border: 1px solid rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.14);
 }
-
-html .chart-controls .mat-mdc-mini-fab.mat-accent {
-    --mdc-fab-small-container-color: #fff;
-}
-
-/* Example of smaller datepicker */
-.mat-datepicker-content {
-    font-size: 0.8rem; /* Adjust font size */
-  }
-  
-  .mat-form-field {
-    font-size: 0.8rem; /* Adjust input font size */
-  }
-  
-  .mat-datepicker-toggle-default-icon {
-    font-size: 1rem; /* Adjust toggle icon size */
-  }

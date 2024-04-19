@@ -1,0 +1,64 @@
+@media screen and (min-width: 767px) {
+  .pl-0{
+    padding-left: 0;
+  }
+
+  .pr-0{
+    padding-right: 0;
+  }
+
+  .w-100{
+    width: 100%;
+  }
+
+  .chart-controls{
+    padding-top: 8px;
+  }
+}
+
+@media screen and (max-width: 766px) {
+    .chart-controls{
+      padding-top: 20px;
+    }
+}
+
+.chart-controls .mat-mdc-mini-fab{
+    box-shadow: none;
+    margin-left: 10px!important;
+}
+
+.chart-controls .mat-mdc-mini-fab:hover{
+    box-shadow: none;
+}
+
+.chart-controls .left-btn{
+  width: 50%;
+  text-align: right;
+}
+
+.chart-controls .right-btn{
+  width: 50%;
+}
+
+.mat-datepicker-content {
+    font-size: 0.8rem;
+}
+  
+.mat-form-field {
+    font-size: 0.8rem;
+}
+
+.mat-datepicker-toggle-default-icon {
+    font-size: 1rem;
+}
+
+.no-data{
+    padding: 100px;
+     text-align: center;
+}
+
+.material-btn{
+  font-size: 20px;
+  height: 55px; 
+  width: 100%;
+}
